@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { LandingPage } from './pages/LandingPage';
 import { LoginPage } from './pages/LoginPage';
@@ -31,7 +31,7 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
 export const App: React.FC = () => {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<LandingPage />} />
@@ -75,7 +75,7 @@ export const App: React.FC = () => {
           {/* Fallback redirect */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </AuthProvider>
   );
 };
